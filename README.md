@@ -10,8 +10,3 @@ Next.js + Tailwind site for fidarainc.com
 2. In Vercel: New Project → Import GitHub → Deploy.
 3. Add `fidarainc.com` domain in Vercel and update DNS per instructions.
 # fidarainc-site
-# fidarainc-site
-# fidarainc-site
-# fidarainc-site
-# fidarainc-site
-# fidarainc-site
