@@ -47,7 +47,7 @@ export default function Page() {
             <div className="mt-6 flex items-center gap-4">
               <Image src="/logos/cissp.svg" alt="CISSP" width={120} height={30} />
               <Image src="/logos/itil.svg" alt="ITIL" width={120} height={30} />
-              <Image src="/logos/iso20000.svg" alt="ISO/IEC 20000" width={160} height={30} />
+              <Image src="/logos/iso20000.svg" alt="ISO/IEC 20000" width={120} height={30} />
             </div>
           </div>
           <div className="bg-white border rounded-3xl p-6 shadow-sm">
