@@ -19,13 +19,13 @@ export default function Page() {
             <Image
               src="/logos/fidara_logo_transparent.png"
               alt="Fidara logo"
-              width={56}
-              height={56}
-              className="h-11 w-11 md:h-14 md:w-14 rounded-xl object-contain"
+              width={80}
+              height={80}
+              className="h-16 w-16 md:h-20 md:w-20 rounded-xl object-contain"
             />
             <div className="leading-tight">
-              <div className="font-semibold text-slate-900">Fidara Consulting Inc.</div>
-              <div className="text-xs text-slate-500">Architecture • Infrastructure • Integration</div>
+              <div className="text-base font-semibold text-slate-900 md:text-lg">Fidara Consulting Inc.</div>
+              <div className="text-xs text-slate-500 md:text-sm">Architecture • Infrastructure • Integration</div>
             </div>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm">
