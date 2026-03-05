@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { Mail, Cloud, Network, Layers, Send, MapPin, CheckCircle2 } from 'lucide-react'
+import { Mail, Cloud, Network, Layers, Send, MapPin, CheckCircle2, ShieldCheck } from 'lucide-react'
 export default function Page() {
   const [submitted, setSubmitted] = useState(false)
   const [activeSection, setActiveSection] = useState('services')
@@ -85,7 +85,7 @@ export default function Page() {
             <div className="mt-6 flex flex-wrap gap-2 text-xs text-slate-600">
               <span className="rounded-full border border-slate-200 px-3 py-1">20+ years enterprise architecture</span>
               <span className="rounded-full border border-slate-200 px-3 py-1">TOGAF 10 • CISSP</span>
-              <span className="rounded-full border border-slate-200 px-3 py-1">NIST/ISO-aligned design</span>
+              <span className="rounded-full border border-slate-200 px-3 py-1">NIST CSF • ISO 27001 aligned</span>
             </div>
             <div className="mt-8">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Certifications</p>
@@ -130,11 +130,12 @@ export default function Page() {
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">Services</h2>
           <p className="mt-2 text-slate-600">Engagements scoped by outcome, delivered via clear Statements of Work.</p>
-          <div className="mt-8 grid md:grid-cols-3 gap-6">
+          <div className="mt-8 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
             {[
               { icon: <Layers className="h-5 w-5"/>, title: 'Enterprise & Solution Architecture', body: 'Current-state assessment, target architecture, and roadmap definition.' },
               { icon: <Network className="h-5 w-5"/>, title: 'Networking & Infrastructure', body: 'Resilient core networking, platform modernization, and observability.' },
-              { icon: <Cloud className="h-5 w-5"/>, title: 'Cloud & Identity Integration', body: 'AWS/Azure identity patterns, secure integration, and automation.' }
+              { icon: <Cloud className="h-5 w-5"/>, title: 'Cloud & Identity Integration', body: 'AWS/Azure identity patterns, secure integration, and automation.' },
+              { icon: <ShieldCheck className="h-5 w-5"/>, title: 'Security Architecture', body: 'Zero Trust segmentation, IAM controls, and NIST/ISO-aligned reference designs.' }
             ].map((c, i) => (
               <div key={i} className="h-full rounded-2xl border bg-white p-6 hover:shadow-md transition-shadow">
                 <div className="inline-flex items-center gap-2 text-slate-900 font-medium">{c.icon}{c.title}</div>
@@ -149,6 +150,18 @@ export default function Page() {
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">Capabilities</h2>
           <p className="mt-2 text-slate-600">Architecture leadership grounded in enterprise delivery across security, cloud, and infrastructure programs.</p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {[
+              'Identity & Access Architecture',
+              'Cloud Security Architecture (AWS/Azure)',
+              'Security Telemetry & Correlation',
+              'Architecture Governance & Risk Integration',
+            ].map((item) => (
+              <span key={item} className="rounded-full border border-slate-300 bg-white px-3 py-1 text-xs text-slate-700">
+                {item}
+              </span>
+            ))}
+          </div>
           <div className="mt-8 grid md:grid-cols-2 gap-6">
             {[
               {
@@ -181,7 +194,7 @@ export default function Page() {
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">Selected outcomes</h2>
           <p className="mt-2 text-slate-600">Representative examples from enterprise architecture and security programs.</p>
-          <div className="mt-8 grid md:grid-cols-3 gap-6">
+          <div className="mt-8 grid md:grid-cols-2 xl:grid-cols-4 gap-6">
             {[
               {
                 title: 'Cross-cloud identity telemetry platform',
@@ -194,6 +207,10 @@ export default function Page() {
               {
                 title: 'Enterprise governance at scale',
                 body: 'Led architecture governance for large, regulated environments with standards, review boards, and roadmap alignment across domains.',
+              },
+              {
+                title: 'Security control standardization',
+                body: 'Defined IAM and security architecture standards that reduced policy drift and improved audit readiness across distributed environments.',
               },
             ].map((item) => (
               <div key={item.title} className="h-full rounded-2xl border bg-white p-6 hover:shadow-md transition-shadow">
@@ -225,6 +242,9 @@ export default function Page() {
           <div className="mt-8">
             <a href="#contact" className="inline-flex rounded-2xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400">
               Book a Discovery Call
+            </a>
+            <a href="#contact" className="ml-3 inline-flex rounded-2xl border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300">
+              Book a Security Architecture Review
             </a>
           </div>
         </div>
