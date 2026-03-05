@@ -1,15 +1,38 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { Mail, Globe2, ShieldCheck, Cloud, Network, Layers, Send, MapPin, CheckCircle2 } from 'lucide-react'
+import { Mail, Cloud, Network, Layers, Send, MapPin, CheckCircle2 } from 'lucide-react'
 export default function Page() {
   const [submitted, setSubmitted] = useState(false)
+  const [activeSection, setActiveSection] = useState('services')
   const credentials = [
     { name: 'ITIL Foundation', src: '/logos/itil.svg', width: 160, height: 76 },
     { name: 'ISO/IEC 20000', src: '/logos/iso20000.svg', width: 110, height: 110 },
     { name: 'CISSP', src: '/logos/cissp.png', width: 150, height: 44 },
     { name: 'TOGAF 10 Practitioner', src: '/logos/togaf-ea-practitioner.png', width: 170, height: 119 },
   ] as const
+  const navItems = [
+    { id: 'services', label: 'Services' },
+    { id: 'capabilities', label: 'Capabilities' },
+    { id: 'approach', label: 'Approach' },
+    { id: 'contact', label: 'Contact' },
+  ] as const
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id)
+        })
+      },
+      { threshold: 0.35, rootMargin: '-40% 0px -45% 0px' }
+    )
+    navItems.forEach((item) => {
+      const section = document.getElementById(item.id)
+      if (section) observer.observe(section)
+    })
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <div className="min-h-screen bg-white text-slate-800">
@@ -29,32 +52,40 @@ export default function Page() {
             </div>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm">
-            <a href="#services" className="hover:text-slate-900 text-slate-600">Services</a>
-            <a href="#capabilities" className="hover:text-slate-900 text-slate-600">Capabilities</a>
-            <a href="#approach" className="hover:text-slate-900 text-slate-600">Approach</a>
-            <a href="#contact" className="hover:text-slate-900 text-slate-600">Contact</a>
+            {navItems.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={`transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 rounded ${
+                  activeSection === item.id ? 'text-slate-900 font-medium' : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
           </nav>
-          <a href="#contact" className="hidden md:inline-flex rounded-2xl bg-slate-900 px-4 py-2 text-white text-sm font-medium hover:bg-slate-800">Start a Project</a>
+          <a href="#contact" className="hidden md:inline-flex rounded-2xl bg-slate-900 px-4 py-2 text-white text-sm font-medium hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400">Book a Discovery Call</a>
         </div>
       </header>
 
       <section className="relative bg-gradient-to-b from-slate-50 to-white">
         <div className="mx-auto max-w-7xl px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h1 className="text-3xl md:text-5xl font-semibold text-slate-900 tracking-tight">
-              Enterprise architecture that <span className="underline underline-offset-4 decoration-slate-300">actually ships</span>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-slate-900 tracking-tight lg:whitespace-nowrap">
+              Enterprise architecture that actually ships
             </h1>
             <p className="mt-5 text-slate-600 text-lg">
               Fidara helps organizations design, modernize, and interconnect complex systems: networking, infrastructure, cloud, identity, and application delivery.
-              Remote-first delivery for global organizations.
+              Global delivery for enterprise organizations.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#services" className="rounded-2xl bg-slate-900 px-4 py-2 text-white text-sm font-medium hover:bg-slate-800">What we do</a>
-              <a href="#contact" className="rounded-2xl border px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Talk to us</a>
+              <a href="#contact" className="rounded-2xl bg-slate-900 px-4 py-2 text-white text-sm font-medium hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400">Book a Discovery Call</a>
+              <a href="#capabilities" className="rounded-2xl border px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300">View Capabilities</a>
             </div>
-            <div className="mt-6 flex items-center gap-6 text-sm text-slate-500">
-              <div className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4"/> Independent • Incorporated</div>
-              <div className="inline-flex items-center gap-2"><Globe2 className="h-4 w-4"/> Global delivery</div>
+            <div className="mt-6 flex flex-wrap gap-2 text-xs text-slate-600">
+              <span className="rounded-full border border-slate-200 px-3 py-1">20+ years enterprise architecture</span>
+              <span className="rounded-full border border-slate-200 px-3 py-1">TOGAF 10 • CISSP</span>
+              <span className="rounded-full border border-slate-200 px-3 py-1">NIST/ISO-aligned design</span>
             </div>
             <div className="mt-8">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Certifications</p>
@@ -95,17 +126,17 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="services" className="py-16 md:py-24 border-t">
+      <section id="services" className="py-20 md:py-24 border-t">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">Services</h2>
           <p className="mt-2 text-slate-600">Engagements scoped by outcome, delivered via clear Statements of Work.</p>
           <div className="mt-8 grid md:grid-cols-3 gap-6">
             {[
-              { icon: <Layers className="h-5 w-5"/>, title: 'Enterprise & Solution Architecture', body: 'Current‑state assessment, target architectures, roadmaps, governance, and decision records.' },
-              { icon: <Network className="h-5 w-5"/>, title: 'Networking & Infrastructure', body: 'Core network, data center, virtualization (VMware/Nutanix), DR, observability, and performance.' },
-              { icon: <Cloud className="h-5 w-5"/>, title: 'Cloud & Identity Integration', body: 'Azure/AWS/GCP patterns, Zero Trust, SSO/federation, privileged access, and automation.' }
+              { icon: <Layers className="h-5 w-5"/>, title: 'Enterprise & Solution Architecture', body: 'Current-state assessment, target architecture, and roadmap definition.' },
+              { icon: <Network className="h-5 w-5"/>, title: 'Networking & Infrastructure', body: 'Resilient core networking, platform modernization, and observability.' },
+              { icon: <Cloud className="h-5 w-5"/>, title: 'Cloud & Identity Integration', body: 'AWS/Azure identity patterns, secure integration, and automation.' }
             ].map((c, i) => (
-              <div key={i} className="rounded-2xl border p-6 hover:shadow-sm transition">
+              <div key={i} className="h-full rounded-2xl border bg-white p-6 hover:shadow-md transition-shadow">
                 <div className="inline-flex items-center gap-2 text-slate-900 font-medium">{c.icon}{c.title}</div>
                 <p className="mt-2 text-slate-600 text-sm leading-relaxed">{c.body}</p>
               </div>
@@ -114,7 +145,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="capabilities" className="py-16 md:py-24 border-t bg-slate-50">
+      <section id="capabilities" className="py-20 md:py-24 border-t bg-slate-50">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">Capabilities</h2>
           <p className="mt-2 text-slate-600">Architecture leadership grounded in enterprise delivery across security, cloud, and infrastructure programs.</p>
@@ -137,7 +168,7 @@ export default function Page() {
                 body: 'Practical multi-year roadmaps to reduce technical debt, improve resilience, and sequence delivery with measurable risk reduction.',
               },
             ].map((item) => (
-              <div key={item.title} className="rounded-2xl border bg-white p-6">
+              <div key={item.title} className="h-full rounded-2xl border bg-white p-6 hover:shadow-md transition-shadow">
                 <h3 className="text-base font-semibold text-slate-900">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.body}</p>
               </div>
@@ -146,7 +177,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 border-t">
+      <section className="py-20 md:py-24 border-t">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">Selected outcomes</h2>
           <p className="mt-2 text-slate-600">Representative examples from enterprise architecture and security programs.</p>
@@ -165,7 +196,7 @@ export default function Page() {
                 body: 'Led architecture governance for large, regulated environments with standards, review boards, and roadmap alignment across domains.',
               },
             ].map((item) => (
-              <div key={item.title} className="rounded-2xl border p-6">
+              <div key={item.title} className="h-full rounded-2xl border bg-white p-6 hover:shadow-md transition-shadow">
                 <h3 className="text-base font-semibold text-slate-900">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.body}</p>
               </div>
@@ -174,7 +205,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="approach" className="py-16 md:py-24 border-t bg-slate-50">
+      <section id="approach" className="py-20 md:py-24 border-t bg-slate-50">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">Approach</h2>
           <p className="mt-2 text-slate-600">A focused delivery model that balances architecture quality with speed to execution.</p>
@@ -185,28 +216,27 @@ export default function Page() {
               { title: 'Deliver', body: 'Implement in phased increments with clear ownership and runbooks.' },
               { title: 'Govern', body: 'Measure outcomes, enforce standards, and evolve the roadmap.' },
             ].map((step) => (
-              <div key={step.title} className="rounded-2xl border bg-white p-5">
+              <div key={step.title} className="h-full rounded-2xl border bg-white p-5 hover:shadow-md transition-shadow">
                 <h3 className="font-semibold text-slate-900">{step.title}</h3>
                 <p className="mt-2 text-sm text-slate-600 leading-relaxed">{step.body}</p>
               </div>
             ))}
           </div>
           <div className="mt-8">
-            <a href="#contact" className="inline-flex rounded-2xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800">
+            <a href="#contact" className="inline-flex rounded-2xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400">
               Book a Discovery Call
             </a>
           </div>
         </div>
       </section>
 
-      <section id="contact" className="py-16 md:py-24 border-t">
+      <section id="contact" className="py-20 md:py-24 border-t">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">Contact</h2>
           <div className="mt-6 grid md:grid-cols-2 gap-8">
             <div className="rounded-2xl border p-6 space-y-2">
               <div className="flex items-center gap-2 text-slate-700"><Mail className="h-4 w-4"/> <a className="underline hover:no-underline" href="mailto:info@fidarainc.com">info@fidarainc.com</a></div>
-              <div className="flex items-center gap-2 text-slate-700"><Mail className="h-4 w-4"/> <a className="underline hover:no-underline" href="mailto:rene.gamache@fidarainc.com">rene.gamache@fidarainc.com</a></div>
-              <div className="flex items-center gap-2 text-slate-700"><MapPin className="h-4 w-4"/> Remote-first global delivery</div>
+              <div className="flex items-center gap-2 text-slate-700"><MapPin className="h-4 w-4"/> Global delivery</div>
               <p className="text-sm text-slate-600">Prefer email first contact. We can schedule a short discovery call.</p>
             </div>
             <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="rounded-2xl border p-6 bg-slate-50">
@@ -215,7 +245,7 @@ export default function Page() {
                 <input className="rounded-xl border px-3 py-2" placeholder="Company / Organization" />
                 <input className="rounded-xl border px-3 py-2" placeholder="Email" type="email" required />
                 <textarea className="rounded-xl border px-3 py-2 min-h-[120px]" placeholder="Tell us about your project" required />
-                <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-4 py-2 text-white text-sm font-medium hover:bg-slate-800">
+                <button className="inline-flex items-center justify-center gap-2 rounded-2xl bg-slate-900 px-4 py-2 text-white text-sm font-medium hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400">
                   <Send className="h-4 w-4"/> Send
                 </button>
                 {submitted && (<p className="text-sm text-emerald-600">Thanks! We’ll reply by email shortly.</p>)}
