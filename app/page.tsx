@@ -19,9 +19,9 @@ export default function Page() {
             <Image
               src="/logos/fidara_logo_transparent.png"
               alt="Fidara logo"
-              width={44}
-              height={44}
-              className="h-11 w-11 rounded-xl object-contain"
+              width={56}
+              height={56}
+              className="h-11 w-11 md:h-14 md:w-14 rounded-xl object-contain"
             />
             <div className="leading-tight">
               <div className="font-semibold text-slate-900">Fidara Consulting Inc.</div>
