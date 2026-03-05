@@ -15,7 +15,7 @@ export default function Page() {
     <div className="min-h-screen bg-white text-slate-800">
       <header className="sticky top-0 bg-white/80 backdrop-blur z-40 border-b">
         <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3 md:gap-4">
             <Image
               src="/logos/fidara_logo_transparent.png"
               alt="Fidara logo"
