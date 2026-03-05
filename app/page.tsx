@@ -4,6 +4,14 @@ import Image from 'next/image'
 import { Mail, Globe2, ShieldCheck, Cable, Cloud, Network, Layers, Send, Building2, MapPin, CheckCircle2 } from 'lucide-react'
 export default function Page() {
   const [submitted, setSubmitted] = useState(false)
+  const credentials = [
+    { name: 'Fidara Inc.', src: '/logos/fidara_logo_transparent.png', width: 88, height: 88 },
+    { name: 'ITIL Foundation', src: '/logos/itil.svg', width: 160, height: 76 },
+    { name: 'ISO/IEC 20000', src: '/logos/iso20000.svg', width: 110, height: 110 },
+    { name: 'CISSP', src: '/logos/cissp.png', width: 150, height: 44 },
+    { name: 'TOGAF 10 Practitioner', src: '/logos/togaf-ea-practitioner.png', width: 170, height: 119 },
+  ] as const
+
   return (
     <div className="min-h-screen bg-white text-slate-800">
       <header className="sticky top-0 bg-white/80 backdrop-blur z-40 border-b">
@@ -44,10 +52,25 @@ export default function Page() {
               <div className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4"/> Independent • Incorporated</div>
               <div className="inline-flex items-center gap-2"><Globe2 className="h-4 w-4"/> Canada‑wide • TN‑eligible (US)</div>
             </div>
-            <div className="mt-6 flex items-center gap-4">
-              <Image src="/logos/cissp.svg" alt="CISSP" width={120} height={30} />
-              <Image src="/logos/itil.svg" alt="ITIL" width={120} height={30} />
-              <Image src="/logos/iso20000.svg" alt="ISO/IEC 20000" width={120} height={30} />
+            <div className="mt-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Credentials</p>
+              <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+                {credentials.map((credential) => (
+                  <div
+                    key={credential.name}
+                    className="flex h-20 items-center justify-center rounded-2xl border border-slate-200 bg-white p-3"
+                    title={credential.name}
+                  >
+                    <Image
+                      src={credential.src}
+                      alt={credential.name}
+                      width={credential.width}
+                      height={credential.height}
+                      className="max-h-14 w-auto object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           <div className="bg-white border rounded-3xl p-6 shadow-sm">
