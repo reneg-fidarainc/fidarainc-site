@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Image from 'next/image'
-import { Mail, Globe2, ShieldCheck, Cable, Cloud, Network, Layers, Send, Building2, MapPin, CheckCircle2 } from 'lucide-react'
+import { Mail, Globe2, ShieldCheck, Cloud, Network, Layers, Send, MapPin, CheckCircle2 } from 'lucide-react'
 export default function Page() {
   const [submitted, setSubmitted] = useState(false)
   const credentials = [
@@ -32,7 +32,6 @@ export default function Page() {
             <a href="#services" className="hover:text-slate-900 text-slate-600">Services</a>
             <a href="#capabilities" className="hover:text-slate-900 text-slate-600">Capabilities</a>
             <a href="#approach" className="hover:text-slate-900 text-slate-600">Approach</a>
-            <a href="#rates" className="hover:text-slate-900 text-slate-600">Rates</a>
             <a href="#contact" className="hover:text-slate-900 text-slate-600">Contact</a>
           </nav>
           <a href="#contact" className="hidden md:inline-flex rounded-2xl bg-slate-900 px-4 py-2 text-white text-sm font-medium hover:bg-slate-800">Start a Project</a>
@@ -47,7 +46,7 @@ export default function Page() {
             </h1>
             <p className="mt-5 text-slate-600 text-lg">
               Fidara helps organizations design, modernize, and interconnect complex systems: networking, infrastructure, cloud, identity, and application delivery.
-              Remote across Canada with on‑site travel as needed.
+              Remote-first delivery for global organizations.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="#services" className="rounded-2xl bg-slate-900 px-4 py-2 text-white text-sm font-medium hover:bg-slate-800">What we do</a>
@@ -55,7 +54,7 @@ export default function Page() {
             </div>
             <div className="mt-6 flex items-center gap-6 text-sm text-slate-500">
               <div className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4"/> Independent • Incorporated</div>
-              <div className="inline-flex items-center gap-2"><Globe2 className="h-4 w-4"/> Canada‑wide • TN‑eligible (US)</div>
+              <div className="inline-flex items-center gap-2"><Globe2 className="h-4 w-4"/> Global delivery</div>
             </div>
             <div className="mt-8">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Certifications</p>
@@ -115,24 +114,87 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="rates" className="py-16 md:py-24 border-t bg-slate-50">
-        <div className="mx-auto max-w-5xl px-6">
-          <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">Rates & engagement</h2>
-          <div className="mt-6 grid md:grid-cols-3 gap-6">
-            <div className="rounded-2xl border bg-white p-6">
-              <div className="text-slate-900 font-medium">Longer engagements</div>
-              <div className="text-3xl font-semibold mt-2">$125<span className="text-base font-normal text-slate-500">/hr CAD</span></div>
-              <p className="mt-2 text-sm text-slate-600">Contracts of 6 months or more.</p>
-            </div>
-            <div className="rounded-2xl border bg-white p-6">
-              <div className="text-slate-900 font-medium">Shorter projects</div>
-              <div className="text-3xl font-semibold mt-2">$150<span className="text-base font-normal text-slate-500">/hr CAD</span></div>
-              <p className="mt-2 text-sm text-slate-600">Projects under 6 months, or rapid turn‑arounds.</p>
-            </div>
-            <div className="rounded-2xl border bg-white p-6">
-              <div className="text-slate-900 font-medium">Travel</div>
-              <p className="mt-2 text-sm text-slate-600">On‑site work across Canada & U.S. Travel billed at cost; billable travel hours by agreement.</p>
-            </div>
+      <section id="capabilities" className="py-16 md:py-24 border-t bg-slate-50">
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">Capabilities</h2>
+          <p className="mt-2 text-slate-600">Architecture leadership grounded in enterprise delivery across security, cloud, and infrastructure programs.</p>
+          <div className="mt-8 grid md:grid-cols-2 gap-6">
+            {[
+              {
+                title: 'Enterprise Architecture & Governance',
+                body: 'Current-state assessments, target-state designs, standards, and architecture review governance aligned to business outcomes.',
+              },
+              {
+                title: 'Security & Identity Architecture',
+                body: 'Zero Trust-oriented IAM patterns, identity correlation, and policy-driven controls aligned with NIST CSF and ISO 27001.',
+              },
+              {
+                title: 'Cloud, Dataflow & Integration',
+                body: 'Cross-cloud patterns for AWS and Azure, including telemetry ingestion, data normalization, and secure integration pipelines.',
+              },
+              {
+                title: 'Modernization Roadmaps',
+                body: 'Practical multi-year roadmaps to reduce technical debt, improve resilience, and sequence delivery with measurable risk reduction.',
+              },
+            ].map((item) => (
+              <div key={item.title} className="rounded-2xl border bg-white p-6">
+                <h3 className="text-base font-semibold text-slate-900">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24 border-t">
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">Selected outcomes</h2>
+          <p className="mt-2 text-slate-600">Representative examples from enterprise architecture and security programs.</p>
+          <div className="mt-8 grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: 'Cross-cloud identity telemetry platform',
+                body: 'Architected distributed pipelines for identity and security events across AWS and Azure to improve risk visibility and operational response.',
+              },
+              {
+                title: 'API security architecture program',
+                body: 'Defined reference architectures mapped to OWASP risk classes, enabling consistent design decisions across engineering and security teams.',
+              },
+              {
+                title: 'Enterprise governance at scale',
+                body: 'Led architecture governance for large, regulated environments with standards, review boards, and roadmap alignment across domains.',
+              },
+            ].map((item) => (
+              <div key={item.title} className="rounded-2xl border p-6">
+                <h3 className="text-base font-semibold text-slate-900">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="approach" className="py-16 md:py-24 border-t bg-slate-50">
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">Approach</h2>
+          <p className="mt-2 text-slate-600">A focused delivery model that balances architecture quality with speed to execution.</p>
+          <div className="mt-8 grid md:grid-cols-4 gap-4">
+            {[
+              { title: 'Discover', body: 'Align on business context, constraints, and risk posture.' },
+              { title: 'Architect', body: 'Design target-state patterns, controls, and integration boundaries.' },
+              { title: 'Deliver', body: 'Implement in phased increments with clear ownership and runbooks.' },
+              { title: 'Govern', body: 'Measure outcomes, enforce standards, and evolve the roadmap.' },
+            ].map((step) => (
+              <div key={step.title} className="rounded-2xl border bg-white p-5">
+                <h3 className="font-semibold text-slate-900">{step.title}</h3>
+                <p className="mt-2 text-sm text-slate-600 leading-relaxed">{step.body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8">
+            <a href="#contact" className="inline-flex rounded-2xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800">
+              Book a Discovery Call
+            </a>
           </div>
         </div>
       </section>
@@ -144,7 +206,7 @@ export default function Page() {
             <div className="rounded-2xl border p-6 space-y-2">
               <div className="flex items-center gap-2 text-slate-700"><Mail className="h-4 w-4"/> <a className="underline hover:no-underline" href="mailto:info@fidarainc.com">info@fidarainc.com</a></div>
               <div className="flex items-center gap-2 text-slate-700"><Mail className="h-4 w-4"/> <a className="underline hover:no-underline" href="mailto:rene.gamache@fidarainc.com">rene.gamache@fidarainc.com</a></div>
-              <div className="flex items-center gap-2 text-slate-700"><MapPin className="h-4 w-4"/> Remote across Canada • Travel available</div>
+              <div className="flex items-center gap-2 text-slate-700"><MapPin className="h-4 w-4"/> Remote-first global delivery</div>
               <p className="text-sm text-slate-600">Prefer email first contact. We can schedule a short discovery call.</p>
             </div>
             <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="rounded-2xl border p-6 bg-slate-50">
@@ -167,7 +229,6 @@ export default function Page() {
         <div className="mx-auto max-w-7xl px-6 text-sm text-slate-500 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>© {new Date().getFullYear()} Fidara Consulting Inc. All rights reserved.</div>
           <div className="flex items-center gap-6">
-            <a href="#rates" className="hover:text-slate-700">Rates</a>
             <a href="#services" className="hover:text-slate-700">Services</a>
             <a href="#contact" className="hover:text-slate-700">Contact</a>
           </div>
