@@ -5,7 +5,6 @@ import { Mail, Globe2, ShieldCheck, Cable, Cloud, Network, Layers, Send, Buildin
 export default function Page() {
   const [submitted, setSubmitted] = useState(false)
   const credentials = [
-    { name: 'Fidara Inc.', src: '/logos/fidara_logo_transparent.png', width: 88, height: 88 },
     { name: 'ITIL Foundation', src: '/logos/itil.svg', width: 160, height: 76 },
     { name: 'ISO/IEC 20000', src: '/logos/iso20000.svg', width: 110, height: 110 },
     { name: 'CISSP', src: '/logos/cissp.png', width: 150, height: 44 },
@@ -17,7 +16,13 @@ export default function Page() {
       <header className="sticky top-0 bg-white/80 backdrop-blur z-40 border-b">
         <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 text-white font-bold">F</span>
+            <Image
+              src="/logos/fidara_logo_transparent.png"
+              alt="Fidara logo"
+              width={44}
+              height={44}
+              className="h-11 w-11 rounded-xl object-contain"
+            />
             <div className="leading-tight">
               <div className="font-semibold text-slate-900">Fidara Consulting Inc.</div>
               <div className="text-xs text-slate-500">Architecture • Infrastructure • Integration</div>
@@ -53,8 +58,8 @@ export default function Page() {
               <div className="inline-flex items-center gap-2"><Globe2 className="h-4 w-4"/> Canada‑wide • TN‑eligible (US)</div>
             </div>
             <div className="mt-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Credentials</p>
-              <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Certifications</p>
+              <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {credentials.map((credential) => (
                   <div
                     key={credential.name}
