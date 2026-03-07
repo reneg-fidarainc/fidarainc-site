@@ -84,6 +84,21 @@ export default function Page() {
     'Governance and policy frameworks',
   ] as const
 
+  const engagementTriggers = [
+    'Active Directory environments need modernization',
+    'Hybrid identity complexity introduces security risk',
+    'Zero Trust initiatives stall before implementation',
+    'Cloud identity models are inconsistent across platforms',
+    'Privileged access lacks clear governance controls',
+  ] as const
+
+  const flagshipDeliverables = [
+    'Identity architecture diagrams',
+    'Security maturity analysis',
+    'Zero Trust alignment review',
+    'Modernization roadmap',
+  ] as const
+
   const expertiseAreas = [
     'Enterprise Identity Architecture',
     'Microsoft Entra ID and Hybrid Identity',
@@ -223,12 +238,46 @@ export default function Page() {
         </div>
       </section>
 
+      <section className="border-t border-slate-200 py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">When Organizations Engage Fidara</h2>
+          <p className="mt-2 max-w-3xl text-slate-600">
+            Most clients engage us when identity architecture decisions are blocking security progress, cloud consistency, or modernization outcomes.
+          </p>
+          <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
+            <ul className="space-y-3">
+              {engagementTriggers.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 text-slate-900" />
+                  <span className="text-slate-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section id="services" className="border-t border-slate-200 py-20 md:py-24">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">Core Consulting Services</h2>
           <p className="mt-2 max-w-3xl text-slate-600">
             Architecture-first consulting engagements focused on enterprise identity modernization, cloud security, and long-term IAM governance.
           </p>
+          <div className="mt-8 rounded-2xl border border-cyan-200 bg-cyan-50/60 p-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyan-800">Flagship Engagement</p>
+            <h3 className="mt-2 text-xl font-semibold text-slate-900">Identity Architecture Assessment</h3>
+            <p className="mt-2 text-slate-700">
+              A 2-4 week advisory engagement delivering a practical, low-risk starting point for enterprise identity modernization.
+            </p>
+            <ul className="mt-4 grid gap-3 md:grid-cols-2">
+              {flagshipDeliverables.map((item) => (
+                <li key={item} className="flex items-start gap-3 rounded-xl border border-cyan-100 bg-white px-3 py-2">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 text-slate-900" />
+                  <span className="text-sm text-slate-700">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
           <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => (
               <div key={service.title} className="service-card h-full rounded-2xl border border-slate-200 bg-white p-6">
@@ -239,6 +288,46 @@ export default function Page() {
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">{service.body}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-slate-200 bg-slate-50 py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">About the Principal</h2>
+          <p className="mt-2 max-w-3xl text-slate-600">
+            Fidara engagements are led directly by Rene Gamache, Principal Identity and Cloud Security Architect.
+          </p>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6">
+              <h3 className="text-base font-semibold text-slate-900">Leadership Profile</h3>
+              <ul className="mt-3 space-y-3">
+                {[
+                  '20+ years of enterprise architecture experience',
+                  'CISSP certified security architecture leadership',
+                  'TOGAF-aligned architecture and governance practices',
+                  'Hands-on cloud security architecture advisory',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 text-slate-900" />
+                    <span className="text-slate-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-white p-6">
+              <h3 className="text-base font-semibold text-slate-900">Why clients value principal-led delivery</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                Clients work directly with the architect defining the strategy and roadmap. This shortens decision cycles,
+                improves architecture quality, and keeps implementation guidance aligned to enterprise constraints.
+              </p>
+              <a
+                href="#contact"
+                className="mt-5 inline-flex rounded-2xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+              >
+                Discuss your identity architecture priorities
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -276,6 +365,35 @@ export default function Page() {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-slate-200 py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <h2 className="text-2xl font-semibold text-slate-900 md:text-3xl">Identity Control Plane Architecture Example</h2>
+          <p className="mt-2 max-w-3xl text-slate-600">
+            A simplified architecture pattern illustrating trust relationships and governance boundaries across hybrid and cloud identity domains.
+          </p>
+          <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="grid gap-4 md:grid-cols-5 md:items-center">
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center text-sm font-medium text-slate-900">
+                Microsoft Entra ID
+              </div>
+              <div className="hidden text-center text-slate-400 md:block">↔</div>
+              <div className="rounded-2xl border border-cyan-200 bg-cyan-50 p-4 text-center text-sm font-semibold text-slate-900">
+                Identity Control Plane
+              </div>
+              <div className="hidden text-center text-slate-400 md:block">↔</div>
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center text-sm font-medium text-slate-900">
+                AWS IAM
+              </div>
+            </div>
+            <div className="mt-4 grid gap-4 md:grid-cols-3">
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 text-center text-sm text-slate-700">SaaS Federation</div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 text-center text-sm text-slate-700">Privileged Identity Controls</div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 text-center text-sm text-slate-700">Governance and Policy Layer</div>
             </div>
           </div>
         </div>
