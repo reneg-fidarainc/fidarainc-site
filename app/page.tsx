@@ -110,6 +110,13 @@ export default function Page() {
     'Security Architecture and Compliance Alignment',
   ] as const
 
+  const certifications = [
+    { name: 'CISSP', src: '/logos/cissp.png', width: 150, height: 44 },
+    { name: 'TOGAF 10 Practitioner', src: '/logos/togaf-ea-practitioner.png', width: 170, height: 119 },
+    { name: 'ITIL Foundation', src: '/logos/itil.svg', width: 160, height: 76 },
+    { name: 'ISO/IEC 20000', src: '/logos/iso20000.svg', width: 110, height: 110 },
+  ] as const
+
   const outcomes = [
     {
       title: 'Identity architecture modernization roadmap',
@@ -314,6 +321,26 @@ export default function Page() {
                   </li>
                 ))}
               </ul>
+              <div className="mt-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Selected Certifications</p>
+                <div className="mt-3 grid grid-cols-2 gap-3">
+                  {certifications.map((credential) => (
+                    <div
+                      key={credential.name}
+                      className="flex h-20 items-center justify-center rounded-2xl border border-slate-200 bg-white p-3"
+                      title={credential.name}
+                    >
+                      <Image
+                        src={credential.src}
+                        alt={credential.name}
+                        width={credential.width}
+                        height={credential.height}
+                        className="max-h-14 w-auto object-contain"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-6">
               <h3 className="text-base font-semibold text-slate-900">Why clients value principal-led delivery</h3>
